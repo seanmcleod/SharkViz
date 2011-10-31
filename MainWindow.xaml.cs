@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Maps.MapControl.WPF;
 
 namespace SharkViz
 {
@@ -22,6 +23,7 @@ namespace SharkViz
         public MainWindow()
         {
             InitializeComponent();
+			DataContext = new ListeningStationViewModel();
             map.Focus();
         }
 
@@ -66,5 +68,23 @@ namespace SharkViz
             canvas.Children.Add(ellipse);  
             */
         }
+
+		private void Ellipse_MouseEnter(object sender, MouseEventArgs e)
+		{
+			FrameworkElement pin = sender as FrameworkElement;
+			var station = (ListeningStation)pin.Tag;
+
+			MapLayer.SetPosition(ContentPopup, station.Location);
+			MapLayer.SetPositionOffset(ContentPopup, new Point(20, -10));
+
+			ContentPopupText.Text = station.ID;
+			ContentPopupDescription.Text = station.Name;
+			ContentPopup.Visibility = Visibility.Visible;
+		}
+
+		private void Ellipse_MouseLeave(object sender, MouseEventArgs e)
+		{
+			ContentPopup.Visibility = Visibility.Collapsed;
+		}
     }
 }

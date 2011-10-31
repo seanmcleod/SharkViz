@@ -3,59 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         Title="Shark Viz" Height="1024" Width="768" WindowState="Maximized">
+    
+    <Window.Resources>
+        <DataTemplate x:Key="ListeningStationTemplate">
+        
+            <Canvas Width="50" Height="50" m:MapLayer.Position="{Binding Location}" m:MapLayer.PositionOrigin="Center"  Opacity="0.5">
+                <Ellipse Width="50" Height="50" Fill="Red" MouseEnter="Ellipse_MouseEnter" MouseLeave="Ellipse_MouseLeave" Tag="{Binding}" />
+                <Label FontSize="10" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="20" Width="20" Content="{Binding ID}" />
+            </Canvas>
+
+        </DataTemplate>
+    </Window.Resources>
+    
     <Grid>
         <m:Map x:Name="map" CredentialsProvider="AqR4BnfUCaw-vAUCjuvDAlSSNtHPvt7vw8omUrZ6OwVId9FYjnM4mxxTDrfxtJMj" Center="-34.14258333,18.58165" ZoomLevel="11" Mode="AerialWithLabels">
 
-            <Canvas Width="50" Height="50" 
-              m:MapLayer.Position="-34.14258333,18.58165" 
-              m:MapLayer.PositionOrigin="Center"  Opacity="0.5">
-                <Ellipse Width="50" Height="50" Fill="Red" />
-                <Label FontSize="10" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="50" Width="50">SIS</Label>
-            </Canvas>
-
-            <Canvas Width="50" Height="50" 
-              m:MapLayer.Position="-34.1327,18.5814166667" 
-              m:MapLayer.PositionOrigin="Center"  Opacity="0.5">
-                <Ellipse Width="50" Height="50" Fill="Red" />
-                <Label FontSize="10" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="50" Width="50">SIN</Label>
-            </Canvas>
-
-            <Canvas Width="50" Height="50" 
-              m:MapLayer.Position="-34.09341667,18.73695" 
-              m:MapLayer.PositionOrigin="Center"  Opacity="0.5">
-                <Ellipse Width="50" Height="50" Fill="Red" />
-                <Label FontSize="10" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="50" Width="50">MO</Label>
-            </Canvas>
-
-            <Canvas Width="50" Height="50" 
-              m:MapLayer.Position="-34.08625,18.73991667" 
-              m:MapLayer.PositionOrigin="Center"  Opacity="0.5">
-                <Ellipse Width="50" Height="50" Fill="Red" />
-                <Label FontSize="10" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="50" Width="50">MI</Label>
-            </Canvas>
-
-            <Canvas Width="50" Height="50" 
-              m:MapLayer.Position="-34.1156,18.56886667" 
-              m:MapLayer.PositionOrigin="Center"  Opacity="0.5">
-                <Ellipse Width="50" Height="50" Fill="Red" />
-                <Label FontSize="10" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="50" Width="50">SFO1</Label>
-            </Canvas>
-
-            <Canvas Width="50" Height="50" 
-              m:MapLayer.Position="-34.10911667,18.56393333" 
-              m:MapLayer.PositionOrigin="Center"  Opacity="0.5">
-                <Ellipse Width="50" Height="50" Fill="Red" />
-                <Label FontSize="10" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="50" Width="50">SFO2</Label>
-            </Canvas>
-
-
+            <m:MapItemsControl ItemsSource="{Binding ListeningStations}" ItemTemplate="{StaticResource ListeningStationTemplate}" />
+            
+            <m:MapLayer x:Name="ContentPopupLayer">
+                <Grid x:Name="ContentPopup" Visibility="Collapsed" Background="White" Opacity="0.85">
+                    <StackPanel Margin="15">
+                        <TextBlock x:Name="ContentPopupText" FontSize="12" FontWeight="Bold" />
+                        <TextBlock x:Name="ContentPopupDescription" FontSize="12" />
+                    </StackPanel>
+                </Grid>
+            </m:MapLayer>
             
         </m:Map>
 
-        <!--
-        <Canvas x:Name="canvas" MouseLeftButtonUp="Canvas_MouseLeftButtonUp" Background="White">
-            <Ellipse Width="40" Height="40" Fill="CadetBlue" Canvas.Left="100" Canvas.Top="100" />
-        </Canvas>
-        -->
     </Grid>
 </Window>
