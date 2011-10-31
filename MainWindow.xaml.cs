@@ -23,7 +23,7 @@ namespace SharkViz
         public MainWindow()
         {
             InitializeComponent();
-			DataContext = new ListeningStationViewModel();
+			DataContext = new SharkViewModel();
             map.Focus();
         }
 
@@ -83,6 +83,27 @@ namespace SharkViz
 		}
 
 		private void Ellipse_MouseLeave(object sender, MouseEventArgs e)
+		{
+			ContentPopup.Visibility = Visibility.Collapsed;
+		}
+
+		private void MapPolyline_MouseEnter(object sender, MouseEventArgs e)
+		{
+			FrameworkElement pin = sender as FrameworkElement;
+			var edge = (Edge)pin.Tag;
+
+			Point mousePosition = e.GetPosition(this);
+			Location mouseLocation = map.ViewportPointToLocation(mousePosition);
+
+			MapLayer.SetPosition(ContentPopup, mouseLocation);
+			MapLayer.SetPositionOffset(ContentPopup, new Point(20, -10));
+
+			ContentPopupText.Text = edge.ID;
+			ContentPopupDescription.Text = edge.Name;
+			ContentPopup.Visibility = Visibility.Visible;
+		}
+
+		private void MapPolyline_MouseLeave(object sender, MouseEventArgs e)
 		{
 			ContentPopup.Visibility = Visibility.Collapsed;
 		}

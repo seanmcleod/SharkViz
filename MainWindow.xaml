@@ -13,13 +13,21 @@
             </Canvas>
 
         </DataTemplate>
+        
+        <DataTemplate x:Key="EdgeTemplate">
+            
+            <m:MapPolyline Locations="{Binding Vertices}" Stroke="Blue" Opacity="0.7" StrokeThickness="5" StrokeEndLineCap="Round" StrokeStartLineCap="Round" MouseEnter="MapPolyline_MouseEnter" MouseLeave="MapPolyline_MouseLeave" Tag="{Binding}" />
+            
+        </DataTemplate>
     </Window.Resources>
     
     <Grid>
         <m:Map x:Name="map" CredentialsProvider="AqR4BnfUCaw-vAUCjuvDAlSSNtHPvt7vw8omUrZ6OwVId9FYjnM4mxxTDrfxtJMj" Center="-34.14258333,18.58165" ZoomLevel="11" Mode="AerialWithLabels">
 
             <m:MapItemsControl ItemsSource="{Binding ListeningStations}" ItemTemplate="{StaticResource ListeningStationTemplate}" />
-            
+
+            <m:MapItemsControl ItemsSource="{Binding Edges}" ItemTemplate="{StaticResource EdgeTemplate}" />
+
             <m:MapLayer x:Name="ContentPopupLayer">
                 <Grid x:Name="ContentPopup" Visibility="Collapsed" Background="White" Opacity="0.85">
                     <StackPanel Margin="15">
