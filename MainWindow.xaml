@@ -25,8 +25,14 @@
         
     </Window.Resources>
     
-    <Grid>
-        <m:Map x:Name="map" CredentialsProvider="AqR4BnfUCaw-vAUCjuvDAlSSNtHPvt7vw8omUrZ6OwVId9FYjnM4mxxTDrfxtJMj" Center="-34.14258333,18.58165" ZoomLevel="11" Mode="AerialWithLabels">
+    <Grid Background="Black">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
+        <m:Map x:Name="map" Grid.Column="0"  CredentialsProvider="AqR4BnfUCaw-vAUCjuvDAlSSNtHPvt7vw8omUrZ6OwVId9FYjnM4mxxTDrfxtJMj" Center="-34.14258333,18.58165" ZoomLevel="11">
 
             <m:MapItemsControl ItemsSource="{Binding Edges}" ItemTemplate="{StaticResource EdgeTemplate}" />
             
@@ -42,6 +48,90 @@
             </m:MapLayer>
             
         </m:Map>
+
+        <Expander Grid.Column="1" IsExpanded="True" ExpandDirection="Right" HorizontalAlignment="Left" Margin="0,0,5,0">
+
+            <Expander.Header>
+                <Label HorizontalAlignment="Center" FontSize="15" FontFamily="Arial">Filters</Label>
+            </Expander.Header>
+            
+            <StackPanel Orientation="Vertical">
+                
+                <Label FontSize="15" Margin="2,0,0,0">Node Type</Label>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,15">
+                    <RadioButton Margin="5,0,5,0">Shark Minutes</RadioButton>
+                    <RadioButton Margin="5,0,5,0">Unique Sharks</RadioButton>
+                </StackPanel>
+
+                <Label FontSize="15" Margin="2,0,0,0">Edge Type</Label>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,15">
+                    <RadioButton Margin="5,0,5,0">Total Transitions</RadioButton>
+                    <RadioButton Margin="5,0,5,0">Unique Sharks</RadioButton>
+                </StackPanel>
+
+                <Label FontSize="15" Margin="2,0,0,0">Sex</Label>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,15">
+                    <RadioButton Margin="5,0,5,0">Both</RadioButton>
+                    <RadioButton Margin="5,0,5,0">Male</RadioButton>
+                    <RadioButton Margin="5,0,5,0">Female</RadioButton>
+                </StackPanel>
+
+                <Label FontSize="15" Margin="2,0,0,0">Date Period</Label>
+                <StackPanel Orientation="Vertical" Margin="0,5,0,15">
+                    <RadioButton Margin="5,0,5,0">All</RadioButton>
+                    <RadioButton Margin="5,0,5,0">Spring</RadioButton>
+                    <RadioButton Margin="5,0,5,0">Summer</RadioButton>
+                    <RadioButton Margin="5,0,5,0">Autumn</RadioButton>
+                    <RadioButton Margin="5,0,5,0">Winter</RadioButton>
+                    <RadioButton Margin="5,0,5,0">Months</RadioButton>
+                    <CheckBox Margin="30,0,5,0">Jan</CheckBox>
+                    <CheckBox Margin="30,0,5,0">Feb</CheckBox>
+                    <CheckBox Margin="30,0,5,0">Feb</CheckBox>
+                    <CheckBox Margin="30,0,5,0">Mar</CheckBox>
+                    <CheckBox Margin="30,0,5,0">Apr</CheckBox>
+                    <CheckBox Margin="30,0,5,0">May</CheckBox>
+                    <CheckBox Margin="30,0,5,0">Jun</CheckBox>
+                    <CheckBox Margin="30,0,5,0">Jul</CheckBox>
+                    <CheckBox Margin="30,0,5,0">Aug</CheckBox>
+                    <CheckBox Margin="30,0,5,0">Sep</CheckBox>
+                    <CheckBox Margin="30,0,5,0">Oct</CheckBox>
+                    <CheckBox Margin="30,0,5,0">Nov</CheckBox>
+                    <CheckBox Margin="30,0,5,0">Dec</CheckBox>
+                    <RadioButton Margin="5,0,5,0">Range</RadioButton>
+                    <StackPanel Orientation="Horizontal" Margin="15,5,0,0">
+                        <Label Margin="0,0,5,0">From:</Label>
+                        <TextBox Margin="0,0,5,0" Width="65"></TextBox>
+                        <Label Margin="0,0,5,0">To:</Label>
+                        <TextBox Margin="0,0,5,0" Width="65"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+
+                <Label FontSize="15" Margin="2,0,0,0">Age</Label>
+                <StackPanel Orientation="Vertical" Margin="0,5,0,15">
+                    <RadioButton Margin="5,0,5,0">All</RadioButton>
+                    <RadioButton Margin="5,0,5,0">Range</RadioButton>
+                    <StackPanel Orientation="Horizontal" Margin="15,5,0,0">
+                        <Label Margin="0,0,5,0">Min:</Label>
+                        <TextBox Margin="0,0,5,0" Width="20"></TextBox>
+                        <Label Margin="0,0,5,0">Max:</Label>
+                        <TextBox Margin="0,0,5,0" Width="20"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+
+                <Label FontSize="15" Margin="2,0,0,0">Sharks</Label>
+                <StackPanel Orientation="Vertical" Margin="0,5,0,15">
+                    <RadioButton Margin="5,0,5,0">All</RadioButton>
+                    <RadioButton Margin="5,0,5,0">Selected</RadioButton>
+                    <CheckBox Margin="30,0,5,0">601</CheckBox>
+                    <CheckBox Margin="30,0,5,0">602</CheckBox>
+                    <CheckBox Margin="30,0,5,0">603</CheckBox>
+                    <CheckBox Margin="30,0,5,0">604</CheckBox>
+                    <CheckBox Margin="30,0,5,0">605</CheckBox>
+                </StackPanel>
+
+            </StackPanel>
+            
+        </Expander>
 
     </Grid>
 </Window>
