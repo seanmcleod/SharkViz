@@ -27,8 +27,6 @@ namespace SharkViz
             map.Focus();
         }
 
-        private double ellipseDiameter = 200.0;
-
         private void Canvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             /*
@@ -106,6 +104,16 @@ namespace SharkViz
 		private void MapPolyline_MouseLeave(object sender, MouseEventArgs e)
 		{
 			ContentPopup.Visibility = Visibility.Collapsed;
+		}
+
+		private void MapPolyline_Loaded(object sender, RoutedEventArgs e)
+		{
+			var polyline = sender as MapPolyline;
+
+			var model = polyline.DataContext as Edge;
+
+			polyline.Stroke = model.Fill;
+			polyline.StrokeThickness = model.Width;
 		}
     }
 }

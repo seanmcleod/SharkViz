@@ -11,15 +11,18 @@
 
         <DataTemplate x:Key="ListeningStationTemplate">
         
-            <Canvas Width="50" Height="50" m:MapLayer.Position="{Binding Location}" m:MapLayer.PositionOrigin="Center" Opacity="0.5">
-                <Ellipse Width="50" Height="50" Fill="Red" MouseEnter="Ellipse_MouseEnter" MouseLeave="Ellipse_MouseLeave" Tag="{Binding}" RenderTransformOrigin="0.5,0.5" RenderTransform="{Binding ZoomLevel, ElementName=map, Converter={StaticResource PushpinScaleTransform}}" />
+            <Canvas Width="{Binding Diameter}" Height="{Binding Diameter}" m:MapLayer.Position="{Binding Location}" m:MapLayer.PositionOrigin="Center" Opacity="1.0">
+                <Ellipse Width="{Binding Diameter}" Height="{Binding Diameter}" Fill="{Binding Fill}" MouseEnter="Ellipse_MouseEnter" MouseLeave="Ellipse_MouseLeave" Tag="{Binding}" RenderTransformOrigin="0.5,0.5" RenderTransform="{Binding ZoomLevel, ElementName=map, Converter={StaticResource PushpinScaleTransform}}" />
             </Canvas>
 
         </DataTemplate>
         
         <DataTemplate x:Key="EdgeTemplate">
             
-            <m:MapPolyline Locations="{Binding Vertices}" Stroke="Blue" Opacity="0.7" StrokeThickness="5" StrokeEndLineCap="Round" StrokeStartLineCap="Round" MouseEnter="MapPolyline_MouseEnter" MouseLeave="MapPolyline_MouseLeave" Tag="{Binding}" />
+            <!-- Stroke and StrokeThickness aren't dependency properties so we can't bind to them! So as current hack we register for Loaded event and set them then
+            <m:MapPolyline Locations="{Binding Vertices}" Stroke="Blue" Opacity="1.0" StrokeThickness="5" StrokeEndLineCap="Round" StrokeStartLineCap="Round" MouseEnter="MapPolyline_MouseEnter" MouseLeave="MapPolyline_MouseLeave" Tag="{Binding}" />
+            -->
+            <m:MapPolyline Loaded="MapPolyline_Loaded" Locations="{Binding Vertices}" Opacity="1.0" StrokeEndLineCap="Round" StrokeStartLineCap="Round" MouseEnter="MapPolyline_MouseEnter" MouseLeave="MapPolyline_MouseLeave" Tag="{Binding}" />
             
         </DataTemplate>
         
