@@ -58,6 +58,8 @@
                 <Label HorizontalAlignment="Center" FontSize="15" FontFamily="Arial">Filters</Label>
             </Expander.Header>
             
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                
             <StackPanel Orientation="Vertical">
                 
                 <Label FontSize="15" Margin="2,0,0,0">Node Type</Label>
@@ -133,7 +135,9 @@
                 </StackPanel>
 
             </StackPanel>
-            
+                
+            </ScrollViewer>
+
         </Expander>
 
     </Grid>
