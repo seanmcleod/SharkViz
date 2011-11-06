@@ -106,14 +106,5 @@ namespace SharkViz
 			ContentPopup.Visibility = Visibility.Collapsed;
 		}
 
-		private void MapPolyline_Loaded(object sender, RoutedEventArgs e)
-		{
-			var polyline = sender as MapPolyline;
-
-			var model = polyline.DataContext as Edge;
-
-			polyline.Stroke = model.Fill;
-			polyline.StrokeThickness = model.Width;
-		}
     }
 }

@@ -19,10 +19,7 @@
         
         <DataTemplate x:Key="EdgeTemplate">
             
-            <!-- Stroke and StrokeThickness aren't dependency properties so we can't bind to them! So as current hack we register for Loaded event and set them then
-            <m:MapPolyline Locations="{Binding Vertices}" Stroke="Blue" Opacity="1.0" StrokeThickness="5" StrokeEndLineCap="Round" StrokeStartLineCap="Round" MouseEnter="MapPolyline_MouseEnter" MouseLeave="MapPolyline_MouseLeave" Tag="{Binding}" />
-            -->
-            <m:MapPolyline Loaded="MapPolyline_Loaded" Locations="{Binding Vertices}" Opacity="1.0" StrokeEndLineCap="Round" StrokeStartLineCap="Round" MouseEnter="MapPolyline_MouseEnter" MouseLeave="MapPolyline_MouseLeave" Tag="{Binding}" />
+            <local:MapPolylineEx Locations="{Binding Vertices}" StrokeEx="{Binding Fill}" StrokeThicknessEx="{Binding Width}" Opacity="1.0" StrokeEndLineCap="Round" StrokeStartLineCap="Round" MouseEnter="MapPolyline_MouseEnter" MouseLeave="MapPolyline_MouseLeave" Tag="{Binding}" />
             
         </DataTemplate>
         
