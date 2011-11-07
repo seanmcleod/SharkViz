@@ -19,7 +19,7 @@
         
         <DataTemplate x:Key="EdgeTemplate">
             
-            <local:MapPolylineEx Locations="{Binding Vertices}" StrokeEx="{Binding Fill}" StrokeThicknessEx="{Binding Width}" Opacity="1.0" StrokeEndLineCap="Round" StrokeStartLineCap="Round" MouseEnter="MapPolyline_MouseEnter" MouseLeave="MapPolyline_MouseLeave" Tag="{Binding}" />
+            <local:MapPolylineEx Locations="{Binding Vertices}" Stroke="{Binding Fill}" StrokeThickness="{Binding Width}" Opacity="1.0" StrokeEndLineCap="Round" StrokeStartLineCap="Round" MouseEnter="MapPolyline_MouseEnter" MouseLeave="MapPolyline_MouseLeave" Tag="{Binding}" />
             
         </DataTemplate>
         
